@@ -65,6 +65,9 @@ class Movie
 
     public function setYear(int $year): void
     {
+        if ($year < 1900) {
+            throw new Exception('Year must be 1900 or later.');
+        }
         $this->year = $year;
     }
 
@@ -80,6 +83,9 @@ class Movie
 
     public function setDuration(int $duration): void
     {
+        if ($duration <= 0) {
+            throw new Exception('Duration must be a positive number.');
+        }
         $this->duration = $duration;
     }
 
@@ -95,15 +101,18 @@ class Movie
     }
 }
 
+try {
+    // Creazione della prima istanza della classe 'Movie'
+    $movie1 = new Movie("Interstellar", "Christopher Nolan", 2010, "Science Fiction", "English", 148);
 
-// Creazione della prima istanza della classe 'Movie'
-$movie1 = new Movie("Interstellar", "Christopher Nolan", 2010, "Science Fiction", "English", 148);
+    // Creazione della seconda istanza della classe 'Movie'
+    $movie2 = new Movie("The Matrix", "The Wachowskis", 1999, "Action", "English", 136);
 
-// Creazione della seconda istanza della classe 'Movie'
-$movie2 = new Movie("The Matrix", "The Wachowskis", 1999, "Action", "English", 136);
+    // Stampa delle informazioni del primo film
+    echo "First Movie Info:<br>" . $movie1->getMovieInfo();
 
-// Stampa delle informazioni aggiornate del primo film
-echo "First Movie Info:<br>" . $movie1->getMovieInfo();
-
-// Stampa delle informazioni della seconda istanza del film
-echo "<br><br>Second Movie Info:<br>" . $movie2->getMovieInfo();
+    // Stampa delle informazioni del secondo del film
+    echo "<br><br>Second Movie Info:<br>" . $movie2->getMovieInfo();
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
