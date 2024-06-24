@@ -1,0 +1,29 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin: 30px;
+  font-size: 40px;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}

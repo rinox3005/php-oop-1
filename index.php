@@ -1,133 +1,106 @@
 <?php
-// Definizione della classe 'Movie'
-class Movie
-{
-    // Dichiarazione delle variabili d'istanza private
-    private string $title;
-    private string $director;
-    private int $year;
-    private array $genres;
-    private string $originalLanguage;
-    private int $duration;
 
-    // Definizione del costruttore
-    public function __construct(string $title, string $director, int $year, array $genres, string $originalLanguage, int $duration)
-    {
-        $this->title = $title;
-        $this->director = $director;
-        $this->year = $year;
-        $this->genres = $genres;
-        $this->originalLanguage = $originalLanguage;
-        $this->duration = $duration;
-    }
-
-    // Metodi getter per accedere alle variabili d'istanza
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function getDirector(): string
-    {
-        return $this->director;
-    }
-
-    public function getYear(): int
-    {
-        return $this->year;
-    }
-
-    public function getGenres(): array
-    {
-        return $this->genres;
-    }
-
-    public function getOriginalLanguage(): string
-    {
-        return $this->originalLanguage;
-    }
-
-    public function getDuration(): int
-    {
-        return $this->duration;
-    }
-
-    // Metodi setter per impostare le variabili d'istanza
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
-
-    public function setDirector(string $director): void
-    {
-        $this->director = $director;
-    }
-
-    public function setYear(int $year): void
-    {
-        if ($year < 1900) {
-            throw new Exception('Year must be 1900 or later.');
-        }
-        $this->year = $year;
-    }
-
-    public function setGenres(array $genres): void
-    {
-        $this->genres = $genres;
-    }
-
-    public function setOriginalLanguage(string $originalLanguage): void
-    {
-        $this->originalLanguage = $originalLanguage;
-    }
-
-    public function setDuration(int $duration): void
-    {
-        if ($duration <= 0) {
-            throw new Exception('Duration must be a positive number.');
-        }
-        $this->duration = $duration;
-    }
-
-    public function addGenre(string $genre): void
-    {
-        array_push($this->genres, $genre);
-    }
-
-
-    // Definizione di un metodo per ottenere le informazioni del film
-    public function getMovieInfo(): string
-    {
-        $genresStr = implode(", ", $this->getGenres());
-        return "Title: " . $this->getTitle() . "<br>" .
-            "Director: " . $this->getDirector() . "<br>" .
-            "Year: " . $this->getYear() . "<br>" .
-            "Genres: " . $genresStr . "<br>" .
-            "Original Language: " . $this->getOriginalLanguage() . "<br>" .
-            "Duration: " . $this->getDuration() . " min";
-    }
-}
+require_once __DIR__ . "/Models/Movie.php";
 
 // Utilizzo della classe Movie con gestione delle eccezioni
 try {
-    // Creazione della prima istanza della classe 'Movie' con aggiunta di generi multipli
+    // Creazione delle istanze della classe 'Movie' con aggiunta di generi multipli
     $genres1 = ["Action", "Sci-Fi"];
     $movie1 = new Movie("Interstellar", "Christopher Nolan", 2010, $genres1, "English", 148);
 
-    // Creazione della seconda istanza della classe 'Movie' con aggiunta di generi multipli
     $genres2 = ["Drama", "Thriller"];
     $movie2 = new Movie("The Matrix", "The Wachowskis", 1999, $genres2, "English", 136);
 
-    // Aggiungo un singolo genere al film
-    $movie1->addGenre('Crime');
+    $genres3 = ["Comedy", "Family"];
+    $movie3 = new Movie(
+        "Home Alone",
+        "Chris Columbus",
+        1990,
+        $genres3,
+        "English",
+        103
+    );
 
-    // Stampa delle informazioni del primo film
-    echo "First Movie Info:<br>" . $movie1->getMovieInfo();
+    $genres4 = ["Adventure", "Fantasy"];
+    $movie4 = new Movie(
+        "The Lord of the Rings: The Fellowship of the Ring",
+        "Peter Jackson",
+        2001,
+        $genres4,
+        "English",
+        178
+    );
 
-    // Stampa delle informazioni del secondo del film
-    echo "<br><br>Second Movie Info:<br>" . $movie2->getMovieInfo();
+    $genres5 = ["Thriller", "Mystery"];
+    $movie5 = new Movie("The Sixth Sense", "M. Night Shyamalan", 1999, $genres5, "English", 107);
+
+    $genres6 = ["Action", "Adventure"];
+    $movie6 = new Movie("Indiana Jones and the Raiders of the Lost Ark", "Steven Spielberg", 1981, $genres6, "English", 115);
+
+    $genres7 = ["Animation", "Family"];
+    $movie7 = new Movie(
+        "Finding Nemo",
+        "Andrew Stanton",
+        2003,
+        $genres7,
+        "English",
+        100
+    );
+
+    $genres8 = ["Crime", "Drama"];
+    $movie8 = new Movie("The Shawshank Redemption", "Frank Darabont", 1994, $genres8, "English", 142);
+
+    $genres9 = ["Sci-Fi", "Action"];
+    $movie9 = new Movie("Blade Runner", "Ridley Scott", 1982, $genres9, "English", 117);
+
+    $genres10 = ["Comedy", "Sci-Fi"];
+    $movie10 = new Movie(
+        "Back to the Future",
+        "Robert Zemeckis",
+        1985,
+        $genres10,
+        "English",
+        116
+    );
+
+    // // Aggiungo un singolo genere al film
+    // $movie1->addGenre('Crime');
 }
 // Gestisco l'errore
 catch (Exception $e) {
     echo "Error: " . $e->getMessage();
 }
+
+require_once __DIR__ . "/db.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP OOP Movies</title>
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <main>
+        <h1>PHP OOP Movies</h1>
+        <div class="container">
+            <?php foreach ($movies as $movie) : ?>
+                <div class="card">
+                    <h3><?php echo $movie['name']; ?></h3>
+                    <p>Director: <?php echo $movie['director']; ?></p>
+                    <p>Year: <?php echo $movie['year']; ?></p>
+                    <p>Genres: <?php echo implode(", ", $movie['genres']); ?></p>
+                    <p>Original Language: <?php echo $movie['originalLanguage']; ?></p>
+                    <p>Duration: <?php echo $movie['duration']; ?> minutes</p>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </main>
+</body>
+
+</html>
