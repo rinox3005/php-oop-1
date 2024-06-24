@@ -82,4 +82,28 @@ class Movie
     {
         $this->duration = $duration;
     }
+
+    // Definizione di un metodo per ottenere le informazioni del film
+    public function getMovieInfo(): string
+    {
+        return "Title: " . $this->getTitle() . "<br>" .
+            "Director: " . $this->getDirector() . "<br>" .
+            "Year: " . $this->getYear() . "<br>" .
+            "Genre: " . $this->getGenre() . "<br>" .
+            "Original Language: " . $this->getOriginalLanguage() . "<br>" .
+            "Duration: " . $this->getDuration() . " min";
+    }
 }
+
+
+// Creazione della prima istanza della classe 'Movie'
+$movie1 = new Movie("Interstellar", "Christopher Nolan", 2010, "Science Fiction", "English", 148);
+
+// Creazione della seconda istanza della classe 'Movie'
+$movie2 = new Movie("The Matrix", "The Wachowskis", 1999, "Action", "English", 136);
+
+// Stampa delle informazioni aggiornate del primo film
+echo "First Movie Info:<br>" . $movie1->getMovieInfo();
+
+// Stampa delle informazioni della seconda istanza del film
+echo "<br><br>Second Movie Info:<br>" . $movie2->getMovieInfo();
