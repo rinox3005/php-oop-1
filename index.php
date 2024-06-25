@@ -2,69 +2,36 @@
 
 require_once __DIR__ . "/Models/Movie.php";
 
+
 // Utilizzo della classe Movie con gestione delle eccezioni
 try {
-    // Creazione delle istanze della classe 'Movie' con aggiunta di generi multipli
-    $genres1 = ["Action", "Sci-Fi"];
-    $movie1 = new Movie("Interstellar", "Christopher Nolan", 2010, $genres1, "English", 148);
+    // Create Actor instances
+    $actor1 = new Actor("Johnny", "Depp");
+    $actor2 = new Actor("Leonardo", "DiCaprio");
+    $actor3 = new Actor("Brad", "Pitt");
+    $actor4 = new Actor("Morgan", "Freeman");
+    $actor5 = new Actor("Tom", "Hanks");
+    $actor6 = new Actor("Keanu", "Reeves");
 
-    $genres2 = ["Drama", "Thriller"];
-    $movie2 = new Movie("The Matrix", "The Wachowskis", 1999, $genres2, "English", 136);
+    // Create Genre instances
+    $genre1 = new Genre("Action");
+    $genre2 = new Genre("Sci-Fi");
+    $genre3 = new Genre("Crime");
+    $genre4 = new Genre("Drama");
+    $genre5 = new Genre("Adventure");
+    $genre6 = new Genre("Romance");
 
-    $genres3 = ["Comedy", "Family"];
-    $movie3 = new Movie(
-        "Home Alone",
-        "Chris Columbus",
-        1990,
-        $genres3,
-        "English",
-        103
-    );
-
-    $genres4 = ["Adventure", "Fantasy"];
-    $movie4 = new Movie(
-        "The Lord of the Rings: The Fellowship of the Ring",
-        "Peter Jackson",
-        2001,
-        $genres4,
-        "English",
-        178
-    );
-
-    $genres5 = ["Thriller", "Mystery"];
-    $movie5 = new Movie("The Sixth Sense", "M. Night Shyamalan", 1999, $genres5, "English", 107);
-
-    $genres6 = ["Action", "Adventure"];
-    $movie6 = new Movie("Indiana Jones and the Raiders of the Lost Ark", "Steven Spielberg", 1981, $genres6, "English", 115);
-
-    $genres7 = ["Animation", "Family"];
-    $movie7 = new Movie(
-        "Finding Nemo",
-        "Andrew Stanton",
-        2003,
-        $genres7,
-        "English",
-        100
-    );
-
-    $genres8 = ["Crime", "Drama"];
-    $movie8 = new Movie("The Shawshank Redemption", "Frank Darabont", 1994, $genres8, "English", 142);
-
-    $genres9 = ["Sci-Fi", "Action"];
-    $movie9 = new Movie("Blade Runner", "Ridley Scott", 1982, $genres9, "English", 117);
-
-    $genres10 = ["Comedy", "Sci-Fi"];
-    $movie10 = new Movie(
-        "Back to the Future",
-        "Robert Zemeckis",
-        1985,
-        $genres10,
-        "English",
-        116
-    );
-
-    // // Aggiungo un singolo genere al film
-    // $movie1->addGenre('Crime');
+    // Create Movie instances
+    $movie1 = new Movie("Inception", "Christopher Nolan", 2010, [$actor1, $actor2], "English", 148, [$genre1, $genre2]);
+    $movie2 = new Movie("The Dark Knight", "Christopher Nolan", 2008, [$actor2, $actor3], "English", 152, [$genre1, $genre3, $genre4]);
+    $movie3 = new Movie("Interstellar", "Christopher Nolan", 2014, [$actor2, $actor4], "English", 169, [$genre5, $genre4, $genre2]);
+    $movie4 = new Movie("Pulp Fiction", "Quentin Tarantino", 1994, [$actor3, $actor5], "English", 154, [$genre3, $genre4]);
+    $movie5 = new Movie("Fight Club", "David Fincher", 1999, [$actor3, $actor6], "English", 139, [$genre4]);
+    $movie6 = new Movie("The Matrix", "The Wachowskis", 1999, [$actor6], "English", 136, [$genre1, $genre2]);
+    $movie7 = new Movie("Forrest Gump", "Robert Zemeckis", 1994, [$actor5], "English", 142, [$genre4, $genre6]);
+    $movie8 = new Movie("The Shawshank Redemption", "Frank Darabont", 1994, [$actor4], "English", 142, [$genre4]);
+    $movie9 = new Movie("Titanic", "James Cameron", 1997, [$actor5], "English", 195, [$genre4, $genre6]);
+    $movie10 = new Movie("The Godfather", "Francis Ford Coppola", 1972, [$actor3, $actor4], "English", 175, [$genre3, $genre4]);
 }
 // Gestisco l'errore
 catch (Exception $e) {
@@ -72,6 +39,8 @@ catch (Exception $e) {
 }
 
 require_once __DIR__ . "/db.php";
+
+// var_dump($movies);
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +50,7 @@ require_once __DIR__ . "/db.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP OOP Movies</title>
-    <!-- Custom Css -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -90,15 +59,18 @@ require_once __DIR__ . "/db.php";
         <h1>PHP OOP Movies</h1>
         <div class="container">
             <?php foreach ($movies as $movie) : ?>
-                <div class="card">
-                    <h3><?php echo $movie['name']; ?></h3>
-                    <p>Director: <?php echo $movie['director']; ?></p>
-                    <p>Year: <?php echo $movie['year']; ?></p>
-                    <p>Genres: <?php echo implode(", ", $movie['genres']); ?></p>
-                    <p>Original Language: <?php echo $movie['originalLanguage']; ?></p>
-                    <p>Duration: <?php echo $movie['duration']; ?> minutes</p>
-                </div>
-            <?php endforeach ?>
+            <div class="card">
+                <h3><?php echo $movie['name']; ?></h3>
+                <p>Director: <?php echo $movie['director']; ?></p>
+                <p>Year: <?php echo $movie['year']; ?></p>
+                <p>Genres: <?php echo implode(", ", array_map(function ($genre) {
+                                    return $genre->getName();
+                                }, $movie['genres'])); ?></p>
+                <p>Original Language: <?php echo $movie['originalLanguage']; ?></p>
+                <p>Duration: <?php echo $movie['duration']; ?> minutes</p>
+                <p>Actors: <?php echo implode(", ", $movie['actors']); ?></p>
+            </div>
+            <?php endforeach; ?>
         </div>
     </main>
 </body>

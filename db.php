@@ -7,7 +7,10 @@ $movies = [
         "genres" => $movie1->getGenres(),
         "director" => $movie1->getDirector(),
         "originalLanguage" => $movie1->getOriginalLanguage(),
-        "duration" => $movie1->getDuration()
+        "duration" => $movie1->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie1->getActors())
     ],
     [
         "name" => $movie2->getTitle(),
@@ -15,7 +18,10 @@ $movies = [
         "genres" => $movie2->getGenres(),
         "director" => $movie2->getDirector(),
         "originalLanguage" => $movie2->getOriginalLanguage(),
-        "duration" => $movie2->getDuration()
+        "duration" => $movie2->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie2->getActors())
     ],
     [
         "name" => $movie3->getTitle(),
@@ -23,7 +29,10 @@ $movies = [
         "genres" => $movie3->getGenres(),
         "director" => $movie3->getDirector(),
         "originalLanguage" => $movie3->getOriginalLanguage(),
-        "duration" => $movie3->getDuration()
+        "duration" => $movie3->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie3->getActors())
     ],
     [
         "name" => $movie4->getTitle(),
@@ -31,7 +40,10 @@ $movies = [
         "genres" => $movie4->getGenres(),
         "director" => $movie4->getDirector(),
         "originalLanguage" => $movie4->getOriginalLanguage(),
-        "duration" => $movie4->getDuration()
+        "duration" => $movie4->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie4->getActors())
     ],
     [
         "name" => $movie5->getTitle(),
@@ -39,7 +51,10 @@ $movies = [
         "genres" => $movie5->getGenres(),
         "director" => $movie5->getDirector(),
         "originalLanguage" => $movie5->getOriginalLanguage(),
-        "duration" => $movie5->getDuration()
+        "duration" => $movie5->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie5->getActors())
     ],
     [
         "name" => $movie6->getTitle(),
@@ -47,7 +62,10 @@ $movies = [
         "genres" => $movie6->getGenres(),
         "director" => $movie6->getDirector(),
         "originalLanguage" => $movie6->getOriginalLanguage(),
-        "duration" => $movie6->getDuration()
+        "duration" => $movie6->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie6->getActors())
     ],
     [
         "name" => $movie7->getTitle(),
@@ -55,7 +73,10 @@ $movies = [
         "genres" => $movie7->getGenres(),
         "director" => $movie7->getDirector(),
         "originalLanguage" => $movie7->getOriginalLanguage(),
-        "duration" => $movie7->getDuration()
+        "duration" => $movie7->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie7->getActors())
     ],
     [
         "name" => $movie8->getTitle(),
@@ -63,7 +84,10 @@ $movies = [
         "genres" => $movie8->getGenres(),
         "director" => $movie8->getDirector(),
         "originalLanguage" => $movie8->getOriginalLanguage(),
-        "duration" => $movie8->getDuration()
+        "duration" => $movie8->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie8->getActors())
     ],
     [
         "name" => $movie9->getTitle(),
@@ -71,7 +95,10 @@ $movies = [
         "genres" => $movie9->getGenres(),
         "director" => $movie9->getDirector(),
         "originalLanguage" => $movie9->getOriginalLanguage(),
-        "duration" => $movie9->getDuration()
+        "duration" => $movie9->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie9->getActors())
     ],
     [
         "name" => $movie10->getTitle(),
@@ -79,6 +106,9 @@ $movies = [
         "genres" => $movie10->getGenres(),
         "director" => $movie10->getDirector(),
         "originalLanguage" => $movie10->getOriginalLanguage(),
-        "duration" => $movie10->getDuration()
+        "duration" => $movie10->getDuration(),
+        "actors" => array_map(function ($actor) {
+            return $actor->getFullName();
+        }, $movie10->getActors())
     ],
 ];
