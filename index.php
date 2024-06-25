@@ -59,17 +59,17 @@ require_once __DIR__ . "/db.php";
         <h1>PHP OOP Movies</h1>
         <div class="container">
             <?php foreach ($movies as $movie) : ?>
-            <div class="card">
-                <h3><?php echo $movie['name']; ?></h3>
-                <p>Director: <?php echo $movie['director']; ?></p>
-                <p>Year: <?php echo $movie['year']; ?></p>
-                <p>Genres: <?php echo implode(", ", array_map(function ($genre) {
-                                    return $genre->getName();
-                                }, $movie['genres'])); ?></p>
-                <p>Original Language: <?php echo $movie['originalLanguage']; ?></p>
-                <p>Duration: <?php echo $movie['duration']; ?> minutes</p>
-                <p>Actors: <?php echo implode(", ", $movie['actors']); ?></p>
-            </div>
+                <div class="card">
+                    <h3><?php echo $movie['name']; ?></h3>
+                    <p>Director: <?php echo $movie['director']; ?></p>
+                    <p>Year: <?php echo $movie['year']; ?></p>
+                    <p>Genres: <?php echo implode(", ", array_map(function ($genre) {
+                                    return $genre?->getName();
+                                }, $movie['genres'] ?? [])); ?></p>
+                    <p>Original Language: <?php echo $movie['originalLanguage']; ?></p>
+                    <p>Duration: <?php echo $movie['duration']; ?> minutes</p>
+                    <p>Actors: <?php echo implode(", ", $movie['actors'] ?? []); ?></p>
+                </div>
             <?php endforeach; ?>
         </div>
     </main>
