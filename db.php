@@ -2,6 +2,7 @@
 
 $movies = [
     [
+        "id" => $movie1->getMovieId(),
         "name" => $movie1->getTitle(),
         "year" => $movie1->getYear(),
         "genres" => $movie1->getGenres(),
@@ -13,6 +14,7 @@ $movies = [
         }, $movie1->getActors())
     ],
     [
+        "id" => $movie2->getMovieId(),
         "name" => $movie2->getTitle(),
         "year" => $movie2->getYear(),
         "genres" => $movie2->getGenres(),
@@ -24,6 +26,7 @@ $movies = [
         }, $movie2->getActors())
     ],
     [
+        "id" => $movie3->getMovieId(),
         "name" => $movie3->getTitle(),
         "year" => $movie3->getYear(),
         "genres" => $movie3->getGenres(),
@@ -35,6 +38,7 @@ $movies = [
         }, $movie3->getActors())
     ],
     [
+        "id" => $movie4->getMovieId(),
         "name" => $movie4->getTitle(),
         "year" => $movie4->getYear(),
         "genres" => $movie4->getGenres(),
@@ -46,6 +50,7 @@ $movies = [
         }, $movie4->getActors())
     ],
     [
+        "id" => $movie5->getMovieId(),
         "name" => $movie5->getTitle(),
         "year" => $movie5->getYear(),
         "genres" => $movie5->getGenres(),
@@ -57,6 +62,7 @@ $movies = [
         }, $movie5->getActors())
     ],
     [
+        "id" => $movie6->getMovieId(),
         "name" => $movie6->getTitle(),
         "year" => $movie6->getYear(),
         "genres" => $movie6->getGenres(),
@@ -68,6 +74,7 @@ $movies = [
         }, $movie6->getActors())
     ],
     [
+        "id" => $movie7->getMovieId(),
         "name" => $movie7->getTitle(),
         "year" => $movie7->getYear(),
         "genres" => $movie7->getGenres(),
@@ -79,6 +86,7 @@ $movies = [
         }, $movie7->getActors())
     ],
     [
+        "id" => $movie8->getMovieId(),
         "name" => $movie8->getTitle(),
         "year" => $movie8->getYear(),
         "genres" => $movie8->getGenres(),
@@ -90,6 +98,7 @@ $movies = [
         }, $movie8->getActors())
     ],
     [
+        "id" => $movie9->getMovieId(),
         "name" => $movie9->getTitle(),
         "year" => $movie9->getYear(),
         "genres" => $movie9->getGenres(),
@@ -101,6 +110,7 @@ $movies = [
         }, $movie9->getActors())
     ],
     [
+        "id" => $movie10->getMovieId(),
         "name" => $movie10->getTitle(),
         "year" => $movie10->getYear(),
         "genres" => $movie10->getGenres(),

@@ -7,6 +7,8 @@ require_once __DIR__ . "/Genre.php";
 class Movie
 {
     // Dichiarazione delle variabili d'istanza private
+    private static int $id = 0;
+    private int $movieId;
     private string $title;
     private string $director;
     private int $year;
@@ -18,6 +20,7 @@ class Movie
     // Definizione del costruttore
     public function __construct(string $title, string $director, int $year, array $actors, string $originalLanguage, int $duration, array $genres)
     {
+        $this->movieId = self::$id++;
         $this->title = $title;
         $this->director = $director;
         $this->year = $year;
@@ -27,6 +30,10 @@ class Movie
         $this->genres = $genres;
     }
 
+    public function getMovieId(): int
+    {
+        return $this->movieId;
+    }
     // Metodi getter per accedere alle variabili d'istanza
     public function getTitle()
     {
